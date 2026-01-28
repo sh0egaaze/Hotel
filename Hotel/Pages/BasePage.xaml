@@ -1,0 +1,133 @@
+﻿<Page x:Class="Hotel.Pages.BasePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Hotel.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="Работа с бронированием номеров" 
+      Style="{StaticResource PageStyle}">
+
+    <Grid x:Name="gridBooking">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderThickness="2" BorderBrush="#3E3E42" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" >
+                <Border BorderThickness="2, 0" BorderBrush="#3E3E42">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Button x:Name="btnnavToClient" Content="Клиенты" Style="{StaticResource CustomButtonStyle}"  
+                            VerticalAlignment="Center" Margin="5" Click="btnnavToClient_Click" />
+                        <Button x:Name="btnShowBooking" Content="Брони"  Style="{StaticResource CustomButtonStyle}"
+                            VerticalAlignment="Center" Margin="5" Click="btnShowBooking_Click" />
+                    </StackPanel>
+                </Border>
+
+                <StackPanel x:Name="spBookingElements" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <Label x:Name="lbOne" Content="Укажите период с" Margin="0,0,5,0" Style="{StaticResource LblStyle}"/>
+
+                    <DatePicker x:Name="dpStart" Margin="0,0,5,0"  Width="90" Style="{StaticResource DatePickerStyle}"/>
+
+                    <Label x:Name="lbTwo" Content="по" Margin="0,0,5,0" Style="{StaticResource LblStyle}"/>
+
+                    <DatePicker x:Name="dpEnd" Margin="0,0,5,0" Width="90" Style="{StaticResource DatePickerStyle}"/>
+
+                    <Button x:Name="btnFilter" Content="Фильтровать" HorizontalAlignment="Center"  Style="{StaticResource CustomButtonStyle}"
+                        VerticalAlignment="Center" Margin="0,0,5,0" Click="btnFilter_Click"/>
+                    <Button x:Name="btnShowAll" Content="Показать все" HorizontalAlignment="Center" Style="{StaticResource CustomButtonStyle}" 
+                        VerticalAlignment="Center" Margin="0,0,5,0" Click="btnShowAll_Click"/>
+                </StackPanel>
+
+                <Border BorderThickness="2, 0" BorderBrush="#3E3E42">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Button x:Name="btnShowADR" Content="ADR" Margin="5" Style="{StaticResource CustomButtonStyle}" 
+                            VerticalAlignment="Center" Click="btnShowADR_Click"  />
+                        <Button x:Name="btnRoomsBooked" Content="Степень загрузки" Style="{StaticResource CustomButtonStyle}" 
+                            VerticalAlignment="Center" Margin="5" Click="btnRoomsBooked_Click"  />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <StackPanel x:Name="spBooking" Orientation="Vertical" Grid.Row="1" Margin="15">
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Left">
+                <Button x:Name="btnCreate" Content="Создать" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" Margin="0,0,5,0" Click="btnCreate_Click"
+                        Style="{StaticResource CustomButtonStyle}" />
+                <Button x:Name="btnDelete" Content="Удалить" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" Click="btnDelete_Click" 
+                        Style="{StaticResource CustomButtonStyle}" />
+            </StackPanel>
+
+            <DataGrid x:Name="dgBookings"  VerticalAlignment="Center" HorizontalAlignment="Center"
+              AutoGenerateColumns="False" Style="{StaticResource DGrStyle}"
+              CanUserAddRows="False" CanUserDeleteRows="False"
+              SelectionMode="Extended" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Номер бронирования" Binding="{Binding id}" />
+                    <DataGridTextColumn Header="Дата заезда" Binding="{Binding dateFrom}" />
+                    <DataGridTextColumn Header="Категория размещения" Binding="{Binding Room.Category.name}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <ListView x:Name="lvClientDetails" Grid.Row="1" HorizontalContentAlignment="Center" 
+          ScrollViewer.HorizontalScrollBarVisibility="Disabled"  Style="{StaticResource LViewStyle}" >
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ФИО клиента" Width="200" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ClientName}" TextAlignment="Center" Foreground="White" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Номер" Width="50" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RoomNum}" TextAlignment="Center" Foreground="White"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Категория" Width="150" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RoomCat}" TextAlignment="Center" Foreground="White"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Период проживания" Width="150" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DateRange}" TextAlignment="Center" Foreground="White" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Дополнительные услуги" Width="200" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Services}" TextAlignment="Left" Foreground="White" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Сумма (руб)" Width="100" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Amount}" TextAlignment="Center" Foreground="White" FontWeight="Bold"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

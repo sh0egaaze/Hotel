@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="26fa07a0f90f4e038224a7e1a66f76f2" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Booking" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Client" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ClientAccount" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Employee" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EmployeeAccount" Width="1.5" PointX="7.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Floor" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PaymentBill" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Position" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Room" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RoomPrice" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Service" Width="1.5" PointX="7.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ServiceInBill" Width="1.5" PointX="9.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Status" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__Booking__clientI__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Booking__roomId__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PaymentBi__booki__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Room__categoryId__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__RoomPrice__categ__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__ClientAcc__clien__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PaymentBi__clien__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Employee__positi__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__EmployeeA__emplo__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__PaymentBi__respE__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__EmployeeA__roleI__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Room__floorId__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__ServiceIn__billI__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Room__statusId__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__ServiceIn__sevic__5FB337D6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
