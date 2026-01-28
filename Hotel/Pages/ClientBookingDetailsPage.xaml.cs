@@ -8,6 +8,7 @@ using System.Data.Entity;
 
 namespace Hotel.Pages
 {
+    // Вспомогательный класс для строки таблицы детализации
     public class DetailLineItem
     {
         public int Index { get; set; }
@@ -45,6 +46,11 @@ namespace Hotel.Pages
 
             var context = Entities.GetContext();
 
+            string clientFullName = "Неизвестный клиент";
+            if (_currentBill.Client != null) 
+            {
+                clientFullName = $"{_currentBill.Client.lastName} {_currentBill.Client.firstName} {_currentBill.Client.middleName}";
+            }
             string roomInfo = "Неизвестный номер";
             string categoryInfo = "Неизвестная категория";
             if (_currentBooking.Room != null)
@@ -55,11 +61,11 @@ namespace Hotel.Pages
                     categoryInfo = _currentBooking.Room.Category.name;
                 }
             }
-            lblBookingInfo.Content = $"Бронирование №{_currentBooking.id}";
+            lblBookingInfo.Content = $"Бронирование №{_currentBooking.id} для {clientFullName}";
             lblBookingDetails.Content = $"Номер: {roomInfo} (Категория: {categoryInfo}), с {_currentBooking.dateFrom:dd.MM.yyyy} по {_currentBooking.dateTill:dd.MM.yyyy}";
 
             var days = (_currentBooking.dateTill - _currentBooking.dateFrom).TotalDays;
-            if (days <= 0) days = 1; 
+            if (days <= 0) days = 1;
 
             decimal roomPricePerNight = 0;
             if (_currentBooking.Room?.categoryId != null)
@@ -85,26 +91,26 @@ namespace Hotel.Pages
             }
 
             var serviceInBillRecords = context.ServiceInBill
-                                              .Include(sib => sib.Service) 
+                                              .Include(sib => sib.Service)
                                               .Where(sib => sib.billId == _currentBill.id)
                                               .ToList();
 
-            int serviceIndex = detailLines.Count > 0 ? 2 : 1; 
+            int serviceIndex = detailLines.Count > 0 ? detailLines.Count + 1 : 1;
             decimal totalServicesAmount = 0;
             foreach (var sib in serviceInBillRecords)
             {
-                if (sib.Service != null) 
+                if (sib.Service != null)
                 {
                     decimal servicePrice = sib.Service.price ?? 0;
-                    decimal lineTotal = servicePrice * sib.amount; 
+                    decimal lineTotal = servicePrice * sib.amount;
                     totalServicesAmount += lineTotal;
 
                     detailLines.Add(new DetailLineItem
                     {
                         Index = serviceIndex++,
                         Name = sib.Service.name,
-                        Quantity = sib.amount, 
-                        Unit = sib.Service.measureUnit ?? "шт", 
+                        Quantity = sib.amount,
+                        Unit = sib.Service.measureUnit ?? "шт",
                         PricePerUnit = servicePrice,
                         TotalLineAmount = lineTotal
                     });
@@ -114,7 +120,7 @@ namespace Hotel.Pages
             dgServices.ItemsSource = detailLines;
 
             decimal calculatedTotal = (roomPricePerNight * (decimal)days) + totalServicesAmount;
-            lblTotalAmount.Content = calculatedTotal.ToString("C"); 
+            lblTotalAmount.Content = calculatedTotal.ToString("C");
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

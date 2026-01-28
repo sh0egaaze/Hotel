@@ -342,12 +342,6 @@ namespace Hotel.Pages
 
         private void DgBookings_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-            if (mainWindow == null || mainWindow.AccessLevel != "client")
-            {
-                return;
-            }
-
             Booking selectedBooking = dgBookings.SelectedItem as Booking;
             if (selectedBooking != null)
             {
