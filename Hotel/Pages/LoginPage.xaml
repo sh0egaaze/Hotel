@@ -1,0 +1,25 @@
+﻿<Page x:Class="Hotel.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Hotel.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LoginPage"
+      Background="#121212">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="300">
+            <Label Content="Авторизация" HorizontalAlignment="Center" FontSize="24" Foreground="White" Margin="0,0,0,20"/>
+
+            <Label Content="Логин:" Foreground="White" HorizontalAlignment="Left" Margin="0,0,0,5"/>
+            <TextBox x:Name="tbLogin" Tag="Введите логин" Margin="0,0,0,10"/>
+
+            <Label Content="Пароль:" Foreground="White" HorizontalAlignment="Left" Margin="0,0,0,5"/>
+            <PasswordBox x:Name="pbPassword" Tag="Введите пароль" Margin="0,0,0,20" />
+
+            <Button x:Name="btnLogin" Content="Войти" Click="BtnLogin_Click" Style="{StaticResource CustomButtonStyle}" Margin="0,0,0,10"/>
+            <Label x:Name="lblMessage" Content="" HorizontalAlignment="Center" Foreground="Red" Visibility="Collapsed"/>
+        </StackPanel>
+    </Grid>
+</Page>

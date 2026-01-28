@@ -79,6 +79,9 @@
     <Compile Include="ClientAccount.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NumericUpDown.xaml.cs">
+      <DependentUpon>NumericUpDown.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -109,6 +112,15 @@
     <Compile Include="Pages\BookingPage.xaml.cs">
       <DependentUpon>BookingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ClientBookingDetailsPage.xaml.cs">
+      <DependentUpon>ClientBookingDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClientBookingPage.xaml.cs">
+      <DependentUpon>ClientBookingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PaymentBill.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -133,6 +145,10 @@
     <Compile Include="Status.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Page Include="Controls\NumericUpDown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -150,6 +166,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\BookingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClientBookingDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClientBookingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

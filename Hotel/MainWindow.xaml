@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hotel"
+        xmlns:pages="clr-namespace:Hotel.Pages"
         mc:Ignorable="d"
-        Title="" Height="450" Width="900" 
+        Title="" Height="450" Width="900"
         Background="#121212">
     <Grid>
-        <Frame Source="Pages/BasePage.xaml" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
